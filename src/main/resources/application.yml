@@ -1,0 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: backend-tamplate #TODO: configurar nombre de aplicacion
+  profiles:
+    default: dev # TODO: configuracion de ambiente de trabajo
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}/${DB_SCHEMA}?useSSL=false
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      ddl-auto: none
+
+logging:
+  level:
+    org.hibernate.SQL: ${SQL_LOGS_LEVEL} # log para componentes a nivel de framework hibernate
+    com.musanlori.dev.otkstr: ${PROJECT_LOGS_LEVEL} # TODO: configurar log para componentes a nievel de paquete de app
+
+springdoc: # TODO: configurar rutas de documentacion swagger
+  swagger-ui:
+    path: /componente-ui-docs
+    enabled: true
+  api-docs:
+    path: /componente-api-docs
+    enabled: true

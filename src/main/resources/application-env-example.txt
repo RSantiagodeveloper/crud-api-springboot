@@ -1,0 +1,15 @@
+# Ejemplo de archivo de configuracion de variables de ambiente para
+# perfil de configuracion de proyecto Springboot.
+# cambiar el nombre de este archivo a application-dev.yml o application-local.yml
+# Ya estan agregados a .gitignore para que no se expongan en repositorio las credenciales
+# o informacion sencible, asi como las configuraciones que varian constantemente.
+
+# configurac de base de datos
+DB_HOST: localhost:3306
+DB_SCHEMA: login_system
+DB_USERNAME: root
+DB_PASSWORD:
+
+# configuracion de Logs
+SQL_LOGS_LEVEL: ERROR
+PROJECT_LOGS_LEVEL: DEBUG
