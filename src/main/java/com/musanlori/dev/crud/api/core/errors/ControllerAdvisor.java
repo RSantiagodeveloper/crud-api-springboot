@@ -4,7 +4,7 @@ import com.musanlori.dev.crud.api.core.errors.exceptions.ServiceFlowErrorExcepti
 import com.musanlori.dev.crud.api.core.errors.exceptions.LogicServiceConflictException;
 import com.musanlori.dev.crud.api.core.errors.exceptions.NotFoundResourceException;
 import com.musanlori.dev.crud.api.core.errors.exceptions.RequestDataNotValidException;
-import com.musanlori.dev.crud.api.core.models.response.GeneralResponseService;
+import com.musanlori.dev.crud.api.core.application.models.response.GeneralResponseService;
 import com.musanlori.dev.crud.api.core.util.ErrorServiceMessages;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
