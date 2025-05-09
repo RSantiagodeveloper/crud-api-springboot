@@ -14,7 +14,7 @@ public class ServiceFlowErrorException extends RuntimeException {
      * */
     public ServiceFlowErrorException(final String msg) {
         super(msg);
-        code = ErrorServiceMessages.ERROR_GRAL_CODE;
+        code = ErrorServiceMessages.GRAL_ERROR_CODE;
     }
 
     /**

@@ -53,7 +53,7 @@ public class ControllerAdvisor {
     public ResponseEntity<GeneralResponseService> notFoundResourceExceptionHandler(final NotFoundResourceException ex) {
         log.error(ErrorServiceMessages.SERVICE_EXCEPTION_LOG_MESSAGE, ex.getMessage());
         GeneralResponseService response = new GeneralResponseService(ex.getCode(), ex.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
     /**
@@ -81,7 +81,7 @@ public class ControllerAdvisor {
     public ResponseEntity<GeneralResponseService> genericExceptionHandler(final Exception ex) {
         log.error(ErrorServiceMessages.SERVICE_EXCEPTION_LOG_MESSAGE, ex);
         GeneralResponseService response =
-                new GeneralResponseService(ErrorServiceMessages.ERROR_GRAL_CODE, ErrorServiceMessages.ERROR_GRAL_MSG);
+                new GeneralResponseService(ErrorServiceMessages.GRAL_ERROR_CODE, ErrorServiceMessages.GRAL_ERROR_MSG);
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

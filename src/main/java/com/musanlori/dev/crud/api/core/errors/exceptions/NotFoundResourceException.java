@@ -15,7 +15,7 @@ public class NotFoundResourceException extends RuntimeException {
      * */
     public NotFoundResourceException(final String message) {
         super(message);
-        code = ErrorServiceMessages.ERROR_GRAL_CODE;
+        code = ErrorServiceMessages.GRAL_ERROR_CODE;
     }
 
     /**

@@ -10,13 +10,13 @@ import java.util.Date;
 @Setter
 public class GeneralResponseService {
 
-    @Schema(name = "codigo", description = "Codigo de respuesta", type = "string")
+    @Schema(name = "codigo", description = "response code", type = "string")
     private String codigo;
 
-    @Schema(name = "mensaje", description = "Mensaje del servicio", type = "string")
+    @Schema(name = "mensaje", description = "service message", type = "string")
     private String mensaje;
 
-    @Schema(name = "timestamp", description = "fecha y hora de respuesta", type = "string")
+    @Schema(name = "timestamp", description = "response datetime", type = "string")
     private Date timestamp;
 
     /**

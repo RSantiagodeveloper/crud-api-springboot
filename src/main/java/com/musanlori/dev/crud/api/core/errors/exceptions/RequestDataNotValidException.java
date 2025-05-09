@@ -14,7 +14,7 @@ public class RequestDataNotValidException extends RuntimeException {
      * */
     public RequestDataNotValidException(final String msg) {
         super(msg);
-        code = ErrorServiceMessages.ERROR_GRAL_CODE;
+        code = ErrorServiceMessages.GRAL_ERROR_CODE;
     }
 
     /**
