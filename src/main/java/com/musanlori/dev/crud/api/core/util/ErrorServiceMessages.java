@@ -15,8 +15,10 @@ public class ErrorServiceMessages {
     public static final String RESOURCE_NOT_FOUND_MSG = "The resource requesting NOT FOUND";
     public static final String INVALID_ID_MSG = "ERROR: Should especific a valid id for '%S'";
     public static final String INVALID_DESCRIPTION_MSG = "ERROR: Should especific a valid name for '%S'";
-    public static final String UPDATE_OPERATION_ERROR_MSG = "Fail to update the {} entity";
-    public static final String DELETE_OPERATION_ERROR_MSG = "Fail to delete the element whit id {}";
+    public static final String INVALID_TIPO_MSG = "ERROR: Should especific a valid type for '%S'";
+    public static final String CREATE_OPERATION_ERROR_MSG = "Fail to create the entity. Error %s";
+    public static final String UPDATE_OPERATION_ERROR_MSG = "Fail to update the %s entity";
+    public static final String DELETE_OPERATION_ERROR_MSG = "Fail to delete the element whit id %s";
     public static final String GRAL_ERROR_MSG = "The service has experienced an internal issue. Process unfinished";
 
     public static final String SERVICE_EXCEPTION_LOG_MESSAGE = "<==== OPERATION FAILED | INTERCEPTED {} ====>";
