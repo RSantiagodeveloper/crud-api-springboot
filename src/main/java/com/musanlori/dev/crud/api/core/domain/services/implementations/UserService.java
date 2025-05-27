@@ -5,6 +5,7 @@ import com.musanlori.dev.crud.api.core.application.models.response.UserResponse;
 import com.musanlori.dev.crud.api.core.domain.model.entity.RolesEntity;
 import com.musanlori.dev.crud.api.core.domain.model.entity.UsersEntity;
 import com.musanlori.dev.crud.api.core.domain.services.definitions.IUserService;
+import com.musanlori.dev.crud.api.core.errors.exceptions.RequestDataNotValidException;
 import com.musanlori.dev.crud.api.core.errors.exceptions.ServiceFlowErrorException;
 import com.musanlori.dev.crud.api.core.infrastructure.repository.RolesCrudRepository;
 import com.musanlori.dev.crud.api.core.infrastructure.repository.UsersCrudRepository;
@@ -65,6 +66,12 @@ public class UserService implements IUserService {
         log.info("Execute: save method");
         ObjectsDebuggerLog.showInJsonFormat(user);
 
+        // todo: delete this. validacion auxiliar
+        if (userRepository.existsByUsername(user.getUsername())) {
+            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
+                    String.format("the username %s already exists", user.getUsername()));
+        }
+
         Optional<RolesEntity> optUser = roleRepository.findByName(Constants.ROLE_USER);
         List<RolesEntity> roles = new ArrayList<>();
 
@@ -92,6 +99,15 @@ public class UserService implements IUserService {
                     "user"
             );
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * */
+    @Override
+    public boolean existByUsername(final String username) {
+        log.debug("USERNAME_EXISTS?: {}", userRepository.existsByUsername(username));
+        return userRepository.existsByUsername(username);
     }
 
     private UserResponse setResponse(final UsersEntity entity) {

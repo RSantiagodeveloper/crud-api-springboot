@@ -21,4 +21,11 @@ public interface IUserService {
      * @return {@link UserResponse} user saved.
      */
     UserResponse save(UserRequest user);
+
+    /**
+     * checks if the username is already exist in DDBB.
+     * @param username username to eval.
+     * @return boolean.
+     * */
+    boolean existByUsername(String username);
 }

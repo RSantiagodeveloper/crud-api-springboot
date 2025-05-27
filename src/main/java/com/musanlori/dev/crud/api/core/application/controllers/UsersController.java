@@ -4,9 +4,11 @@ import com.musanlori.dev.crud.api.core.application.models.request.UserRequest;
 import com.musanlori.dev.crud.api.core.application.models.response.UserResponse;
 import com.musanlori.dev.crud.api.core.domain.services.definitions.IUserService;
 import com.musanlori.dev.crud.api.core.util.Constants;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,10 +38,12 @@ public class UsersController {
     /**
      * Api: Creates a new User in DDBB.
      * @param user request for a new user.
+     * @param result implicit parameter to validation.
      * @return {@link UserResponse}
      * */
     @PostMapping("/add-user")
-    public ResponseEntity<UserResponse> createUser(@RequestBody final UserRequest user) {
+    public ResponseEntity<UserResponse> createUser(@Valid @RequestBody final UserRequest user,
+                                                   final BindingResult result) {
         return new ResponseEntity<>(service.save(user), HttpStatus.CREATED);
     }
 

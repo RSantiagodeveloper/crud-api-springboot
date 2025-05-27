@@ -25,8 +25,8 @@ public class ControllerAdvisor {
     @ExceptionHandler(RequestDataNotValidException.class)
     public ResponseEntity<GeneralResponseService> requestDataNotValidExceptonHandler(final RequestDataNotValidException ex) {
         log.error(ErrorServiceMessages.SERVICE_EXCEPTION_LOG_MESSAGE, ex.getMessage());
-        GeneralResponseService response = new GeneralResponseService(ex.getCode(), ex.getMessage());
-        return new ResponseEntity<>(response, HttpStatus.UNPROCESSABLE_ENTITY);
+        GeneralResponseService response = new GeneralResponseService(ex.getCode(), ex.getMessage(), ex.getErrors());
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
     /**
