@@ -1,3 +1,6 @@
+INSERT INTO roles(created_at, updated_at, name)VALUES(CURRENT_TIMESTAMP, null, 'ROLE_ADMIN');
+INSERT INTO roles(created_at, updated_at, name)VALUES(CURRENT_TIMESTAMP, null, 'ROLE_USER');
+
 INSERT INTO cat_editoriales(id_editorial, descripcion, created_at, updated_at) values('e67beffe-3c57-44c3-9676-80d8b2017b4e', 'SUESHIA', CURRENT_TIMESTAMP, null);
 INSERT INTO cat_fabricantes(id_fabricante, descripcion, created_at, updated_at) VALUES('6ec4807c-9884-431c-a1bc-474609e16b3c', 'BANDAI', CURRENT_TIMESTAMP, null);
 INSERT INTO cat_franquicias(id_franquicia, descripcion, created_at, updated_at) VALUES('d48219a3-1afe-4b48-ade1-395a980a88df', 'DRAGON BALL', CURRENT_TIMESTAMP, null);

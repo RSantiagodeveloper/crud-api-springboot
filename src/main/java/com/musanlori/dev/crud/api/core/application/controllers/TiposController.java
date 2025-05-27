@@ -20,7 +20,7 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = Constants.BASE_PATH)
+@RequestMapping(value = Constants.CRUD_BASE_PATH)
 public class TiposController {
 
     @Autowired

@@ -13,6 +13,7 @@ public final class ObjectsDebuggerLog {
      * */
     public static void showInJsonFormat(final Object object) {
         try {
+            log.debug("debugging {} object", object.getClass());
             log.debug(new ObjectMapper().writer().writeValueAsString(object));
         } catch (JsonProcessingException e) {
             log.error("{}", e.getMessage());
