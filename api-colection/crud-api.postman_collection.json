@@ -1,0 +1,739 @@
+{
+	"info": {
+		"_postman_id": "0678c427-ab77-418e-8fcc-94940332311d",
+		"name": "crud-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16047970"
+	},
+	"item": [
+		{
+			"name": "editoriales",
+			"item": [
+				{
+					"name": "createEditorial",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"NUEVA_EDITORIAL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/editorial",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"editorial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEditoriales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/editoriales",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"editoriales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getEditorial",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/editorial?uuid=3455b24a-7a07-4a4e-84fc-55c27931ce8a",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"editorial"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "3455b24a-7a07-4a4e-84fc-55c27931ce8a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEditoriales",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uuidElement\": \"3455b24a-7a07-4a4e-84fc-55c27931ce8a\",\n    \"description\": \"EDITORIAL ACTUALIZADA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/editorial",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"editorial"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEditorial",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/editorial?uuid=3455b24a-7a07-4a4e-84fc-55c27931ce8a",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"editorial"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "3455b24a-7a07-4a4e-84fc-55c27931ce8a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fabricantes",
+			"item": [
+				{
+					"name": "createFabricante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"NUEVA_EDITORIAL\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/fabricante",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"fabricante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFabricantes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/fabricantes",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"fabricantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFabricante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/fabricante?uuid=ee386d81-f469-4243-8ef4-57d149923a66",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"fabricante"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "ee386d81-f469-4243-8ef4-57d149923a66"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateEditoriales",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uuidElement\": \"ee386d81-f469-4243-8ef4-57d149923a66\",\n    \"description\": \"FABRICANTE ACTUALIZADA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/fabricante",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"fabricante"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteFabricante",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/fabricante?uuid=ee386d81-f469-4243-8ef4-57d149923a66",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"fabricante"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "ee386d81-f469-4243-8ef4-57d149923a66"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "franquicias",
+			"item": [
+				{
+					"name": "createFranquicia",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"NUEVA_FRANQUICIA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/franquicia",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"franquicia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFranquicias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/franquicias",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"franquicias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getFranquicia",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/franquicia?uuid=1051046d-88ef-4968-9b43-66bf4e011659",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"franquicia"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "1051046d-88ef-4968-9b43-66bf4e011659"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateFranquicia",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uuidElement\": \"1051046d-88ef-4968-9b43-66bf4e011659\",\n    \"description\": \"FRANQUICIA ACTUALIZADA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/franquicia",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"franquicia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteFranquicia",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/franquicia?uuid=1051046d-88ef-4968-9b43-66bf4e011659",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"franquicia"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "1051046d-88ef-4968-9b43-66bf4e011659"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tipos",
+			"item": [
+				{
+					"name": "createTipo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"NUEVO TIPO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/tipo",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"tipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTipos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/tipos",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"tipos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTipos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/tipo?uuid=3",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"tipo"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateTipo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idElement\": 3,\n    \"description\": \"TIPO ACTUALIZADO\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/tipo",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"tipo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTipo",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/tipo?uuid=3",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"tipo"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "articulos",
+			"item": [
+				{
+					"name": "createArticulo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Dragon Ball 2\",\n    \"descripcion\": \"Segundo Tomo de Dragon Ball\",\n    \"precio\": 99.99,\n    \"unidades\": 1,\n    \"calificacion\": 4.9,\n    \"tipo\": {\n        \"idElement\": 1\n    },\n    \"franquicia\": {\n        \"uuidElement\": \"d48219a3-1afe-4b48-ade1-395a980a88df\"\n    },\n    /* \"fabricante\": {\n        \"uuidElement\": \"\"\n    }, */\n    \"editorial\": {\n        \"uuidElement\": \"e67beffe-3c57-44c3-9676-80d8b2017b4e\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/articulo",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"articulo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getArticulos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/articulos",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"articulos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getArticulo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/articulo?uuid=b701c2bf-7e5c-4e5a-8ebd-d6d077287a75",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"articulo"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "b701c2bf-7e5c-4e5a-8ebd-d6d077287a75"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateArticulo",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"uuid\": \"e870b9ea-e71f-4f29-bdf2-d3cf1cebd426\",\n    \"nombre\": \"Shenlog figure\",\n    \"descripcion\": \"Figura de Shenlog, Dragon Ball\",\n    \"precio\": 999.99,\n    \"unidades\": 2,\n    \"calificacion\": 4.9,\n    \"tipo\": {\n        \"idElement\": 2\n    },\n    \"franquicia\": {\n        \"uuidElement\": \"d48219a3-1afe-4b48-ade1-395a980a88df\"\n    },\n    \"fabricante\": {\n        \"uuidElement\": \"6ec4807c-9884-431c-a1bc-474609e16b3c\"\n    }\n    /* \"editorial\": {\n        \"uuidElement\": null\n    } */\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/articulo",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"articulo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEditorial",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/crud-api/articulo?uuid=3455b24a-7a07-4a4e-84fc-55c27931ce8a",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"crud-api",
+								"articulo"
+							],
+							"query": [
+								{
+									"key": "uuid",
+									"value": "3455b24a-7a07-4a4e-84fc-55c27931ce8a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "add_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"musanlori3\",\n    \"password\": \"soyadmin\",\n    \"admin\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/auth/add-user",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"add-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "all_users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{localhost}}:8080/auth/get-all",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"get-all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"musanlori3\",\n    \"password\": \"soyadmin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{localhost}}:8080/login",
+							"host": [
+								"{{localhost}}"
+							],
+							"port": "8080",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
