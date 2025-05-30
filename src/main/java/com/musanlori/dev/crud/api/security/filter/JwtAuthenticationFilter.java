@@ -2,6 +2,7 @@ package com.musanlori.dev.crud.api.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.musanlori.dev.crud.api.core.application.models.request.UserRequest;
+import com.musanlori.dev.crud.api.security.util.Constants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.FilterChain;
@@ -18,7 +19,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
@@ -28,9 +28,6 @@ import java.util.Map;
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
-
-    // generates the secret Key.
-    private static final SecretKey SECRET_KEY = Jwts.SIG.HS256.key().build();
 
     /**
      * constructor.
@@ -84,7 +81,9 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
         // extraccion de roles
         Collection<? extends GrantedAuthority> roles = authResult.getAuthorities();
-        Claims claims = Jwts.claims().add("authorities", roles).build();
+        Claims claims = Jwts.claims()
+                .add(Constants.AUTHORITIES_KEY, new ObjectMapper().writeValueAsString(roles))
+                .build();
 
         // genera el token JWT a partir de los datos de usuario y la secret Key
         // el token dura una hora.
@@ -93,20 +92,20 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 .claims(claims)
                 .expiration(new Date(System.currentTimeMillis() + 3600000))
                 .issuedAt(new Date())
-                .signWith(SECRET_KEY)
+                .signWith(Constants.SECRET_KEY)
                 .compact();
 
         // agrega el token al encabezado de la respuesta.
-        response.addHeader(HttpHeaders.AUTHORIZATION, "Bearer " + token);
+        response.addHeader(HttpHeaders.AUTHORIZATION, Constants.BEARER_PREFIX + token);
 
         // agrega el token en el body del response
         Map<String, String> body = new HashMap<>();
-        body.put("username", username);
-        body.put("msg", "Login Success");
-        body.put("token", token);
+        body.put(Constants.USERNAME_KEY, username);
+        body.put(Constants.MSG_KEY, Constants.SUCCESS_LOGIN_MSG);
+        body.put(Constants.TOKEN_KEY, token);
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setContentType("application/json");
+        response.setContentType(Constants.CONTENT_TYPE_JSON);
         response.setStatus(HttpStatus.OK.value());
     }
 
@@ -115,10 +114,10 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     @Override
     protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
         Map<String, String> body = new HashMap<>();
-        body.put("message", "Error en la validacion de credenciales");
-        body.put("error", failed.getMessage());
+        body.put(Constants.MSG_KEY, Constants.ERROR_LOGIN_MSG);
+        body.put(Constants.ERROR_KEY, failed.getMessage());
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
-        response.setContentType("application/json");
+        response.setContentType(Constants.CONTENT_TYPE_JSON);
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
     }
 }

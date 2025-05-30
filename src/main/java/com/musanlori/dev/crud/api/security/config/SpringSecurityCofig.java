@@ -2,6 +2,7 @@ package com.musanlori.dev.crud.api.security.config;
 
 import com.musanlori.dev.crud.api.core.util.Constants;
 import com.musanlori.dev.crud.api.security.filter.JwtAuthenticationFilter;
+import com.musanlori.dev.crud.api.security.filter.JwtValidationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -46,8 +47,9 @@ public class SpringSecurityCofig {
                     .permitAll() //all in AUTH path, is public
                     .anyRequest()
                     .authenticated()) // the rest, is only with authenticate
-                .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager())) // configura el JWT
-                .csrf(AbstractHttpConfigurer::disable)
+                .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager())) // configura el login para generar jwt
+                .addFilter(new JwtValidationFilter(authenticationConfiguration.getAuthenticationManager())) // configura el validador de JWT
+                .csrf(AbstractHttpConfigurer::disable) // desactiva el filtro de seguridad csrf.
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
     }
