@@ -20,7 +20,7 @@
 		<jupiter.version>5.9.2</jupiter.version>
 		<checkstyle-maven-plugin.version>3.6.0</checkstyle-maven-plugin.version>
 		<checkstyle-maven-plugin.encoding>UTF-8</checkstyle-maven-plugin.encoding>
-		<main.package.path>com/musanlori/dev/otkstr/tamplate</main.package.path>
+		<main.package.path>com/musanlori/dev/crud/api</main.package.path>
 		<general.coverage.porcent>0.0</general.coverage.porcent>
 	</properties>
 	<dependencies>
@@ -112,9 +112,12 @@
 				<configuration>
 					<!-- exclusion de clases y/o paquetes que no seran reportadas por jacoco -->
 					<excludes>
-						<exclude>${main.package.path}/modulo/errors/**</exclude>
-						<exclude>${main.package.path}/modulo/models/**</exclude>
-						<exclude>${main.package.path}/modulo/util/**</exclude>
+						<exclude>${main.package.path}/core/errors/**</exclude>
+						<exclude>${main.package.path}/core/application/models/**</exclude>
+						<exclude>${main.package.path}/core/application/validation/**</exclude>
+						<exclude>${main.package.path}/core/domain/model/**</exclude>
+						<exclude>${main.package.path}/core/util/**</exclude>
+						<exclude>${main.package.path}/security/**</exclude>
 						<exclude>${main.package.path}/Application.class</exclude>
 					</excludes>
 				</configuration>
