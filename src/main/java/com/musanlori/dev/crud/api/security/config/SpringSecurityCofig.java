@@ -1,8 +1,12 @@
-package com.musanlori.dev.crud.api.config;
+package com.musanlori.dev.crud.api.security.config;
 
 import com.musanlori.dev.crud.api.core.util.Constants;
+import com.musanlori.dev.crud.api.security.filter.JwtAuthenticationFilter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -12,6 +16,14 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SpringSecurityCofig {
+
+    @Autowired
+    private AuthenticationConfiguration authenticationConfiguration;
+
+    @Bean
+    AuthenticationManager authenticationManager() throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 
     /**
      * generates new password encoder.
@@ -34,6 +46,7 @@ public class SpringSecurityCofig {
                     .permitAll() //all in AUTH path, is public
                     .anyRequest()
                     .authenticated()) // the rest, is only with authenticate
+                .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager())) // configura el JWT
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .build();
