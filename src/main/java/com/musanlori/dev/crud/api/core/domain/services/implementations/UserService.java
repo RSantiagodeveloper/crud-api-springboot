@@ -50,6 +50,8 @@ public class UserService implements IUserService {
         for (UsersEntity result: results) {
             UserResponse model = new UserResponse();
             model.setUsername(result.getUsername());
+            model.setEnable(result.getEnable());
+            result.getRoles().forEach(rol -> model.getRole().add(rol.getName()));
             response.add(model);
         }
 

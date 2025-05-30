@@ -6,6 +6,7 @@ import com.musanlori.dev.crud.api.security.filter.JwtValidationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -43,8 +44,12 @@ public class SpringSecurityCofig {
     @Bean
     SecurityFilterChain filterChain(final HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(
-            (authz) -> authz.requestMatchers(Constants.AUTH_BASE_PATH + "**")
-                    .permitAll() //all in AUTH path, is public
+            (authz) -> authz
+                    .requestMatchers(Constants.AUTH_BASE_PATH + "**").permitAll() //all in AUTH path, is public
+                    .requestMatchers(HttpMethod.GET, Constants.CRUD_BASE_PATH + "**").hasAnyRole(Constants.ADMIN_STR, Constants.USER_STR) //all POST in CRUD path is only to admin.
+                    .requestMatchers(HttpMethod.POST, Constants.CRUD_BASE_PATH + "**").hasRole(Constants.ADMIN_STR) //all POST in CRUD path is only to admin.
+                    .requestMatchers(HttpMethod.PUT, Constants.CRUD_BASE_PATH + "**").hasRole(Constants.ADMIN_STR) //all PUT in CRUD path is only to admin.
+                    .requestMatchers(HttpMethod.DELETE, Constants.CRUD_BASE_PATH + "**").hasRole(Constants.ADMIN_STR) //all DELETE in CRUD path is only to admin.
                     .anyRequest()
                     .authenticated()) // the rest, is only with authenticate
                 .addFilter(new JwtAuthenticationFilter(authenticationConfiguration.getAuthenticationManager())) // configura el login para generar jwt
