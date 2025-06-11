@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class SimpleGrantedAuthorityJsonCreator {
 
     /**
-     * Utilidad para transformar campos ROLE del SimpleGrantedAuthority de spring security,
-     * en campos "authority" configurados en el filtro de authentication.
+     * utility to transform field ROLE of SimpleGrantedAuthority from Spring Security package
+     * to field "authority" configs on the Authentication Filter.
      * @param role role.
      * */
     @JsonCreator
-    public SimpleGrantedAuthorityJsonCreator(@JsonProperty("authority") String role) { }
+    public SimpleGrantedAuthorityJsonCreator(@JsonProperty("authority") final String role) { }
 
 }

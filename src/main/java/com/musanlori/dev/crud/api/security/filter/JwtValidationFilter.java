@@ -27,12 +27,22 @@ import java.util.Collection;
 
 public class JwtValidationFilter extends BasicAuthenticationFilter {
 
-    public JwtValidationFilter(AuthenticationManager authenticationManager) {
+    /**
+     * Injects the dependencies to validate the JWT token.
+     * @param authenticationManager dependency
+     * */
+    public JwtValidationFilter(final AuthenticationManager authenticationManager) {
         super(authenticationManager);
     }
 
+    /**
+     * executes the jwt token validation.
+     * @param request request
+     * @param response response
+     * @param chain chain
+     * */
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
+    protected void doFilterInternal(final HttpServletRequest request, final HttpServletResponse response, final FilterChain chain)
             throws IOException, ServletException {
 
         String header = request.getHeader(HttpHeaders.AUTHORIZATION);

@@ -29,7 +29,7 @@ public class UserDetailsService implements IUsersDetailsService {
      * */
     @Transactional(readOnly = true)
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(final String username) throws UsernameNotFoundException {
         Optional<UsersEntity> byUsername = repository.findByUsername(username);
 
         UsersEntity user = byUsername.orElseThrow(() ->

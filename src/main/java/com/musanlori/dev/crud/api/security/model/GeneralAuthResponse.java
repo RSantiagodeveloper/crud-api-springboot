@@ -16,10 +16,19 @@ public class GeneralAuthResponse {
     private String error;
     private Date timestamp;
 
+    /**
+     * default constructor.
+     * */
     public GeneralAuthResponse() {
         this.timestamp = new Date();
     }
 
+    /**
+     * Creates a successful response with all details.
+     * @param username username data
+     * @param message response message
+     * @param token token value
+     * */
     public GeneralAuthResponse(final String username, final String message, final String token) {
         this.username = username;
         this.message = message;
@@ -28,6 +37,11 @@ public class GeneralAuthResponse {
         this.timestamp = new Date();
     }
 
+    /**
+     * Creates an error response with all details.
+     * @param message response message
+     * @param error error value
+     * */
     public GeneralAuthResponse(final String message, final String error) {
         this.username = null;
         this.message = message;

@@ -2,6 +2,7 @@ package com.musanlori.dev.crud.api.security.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.musanlori.dev.crud.api.core.application.models.request.UserRequest;
+import com.musanlori.dev.crud.api.security.model.GeneralAuthResponse;
 import com.musanlori.dev.crud.api.security.util.Constants;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -22,30 +23,27 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private AuthenticationManager authenticationManager;
 
     /**
-     * constructor.
-     * @param authenticationManager param.
+     * Use dependency injection with the AuthenticationManager configured in the SpringSecurityConfig class.
+     * @param authenticationManager dependency.
      * */
-    public JwtAuthenticationFilter(AuthenticationManager authenticationManager) {
+    public JwtAuthenticationFilter(final AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
 
     /**
-     * realiza la autenticacion del usuario usando sus credenciales.
-     * implicitamente manda a llamar el servicio que implementa UserDetailsService de Springboot.
-     * @param request req
-     * @param response resp
-     * @return {@link Authentication}
+     * executes the user Authentication using its credentials.
+     * @param request request object.
+     * @param response response object.
+     * @return {@link Authentication} authentication result.
      * */
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+    public Authentication attemptAuthentication(final HttpServletRequest request, final HttpServletResponse response)
             throws AuthenticationException {
         UserRequest user = null;
         String username = null;
@@ -66,15 +64,15 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     /**
-     * Metodo que se activa cuando la autenticacion fue exitosa.
+     * callback when the auth is success.
      * @param request request
      * @param response response
      * @param chain chain
      * @param authResult authResul
      * */
     @Override
-    protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
-                                            FilterChain chain, Authentication authResult) throws IOException, ServletException {
+    protected void successfulAuthentication(final HttpServletRequest request, final HttpServletResponse response,
+                                            final FilterChain chain, final Authentication authResult) throws IOException, ServletException {
         // extraccion del numbre de usuario
         User user = (User) authResult.getPrincipal();
         String username = user.getUsername();
@@ -90,7 +88,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         String token = Jwts.builder()
                 .subject(username)
                 .claims(claims)
-                .expiration(new Date(System.currentTimeMillis() + 3600000))
+                .expiration(new Date(System.currentTimeMillis() + Constants.TIME_TO_EXPIRE))
                 .issuedAt(new Date())
                 .signWith(Constants.SECRET_KEY)
                 .compact();
@@ -99,10 +97,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
         response.addHeader(HttpHeaders.AUTHORIZATION, Constants.BEARER_PREFIX + token);
 
         // agrega el token en el body del response
-        Map<String, String> body = new HashMap<>();
-        body.put(Constants.USERNAME_KEY, username);
-        body.put(Constants.MSG_KEY, Constants.SUCCESS_LOGIN_MSG);
-        body.put(Constants.TOKEN_KEY, token);
+        GeneralAuthResponse body = new GeneralAuthResponse(
+                username,
+                Constants.SUCCESS_LOGIN_MSG,
+                token
+        );
 
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setContentType(Constants.CONTENT_TYPE_JSON);
@@ -110,12 +109,16 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     }
 
     /**
+     * callback when the authentication fails.
+     * @param request request
+     * @param response response
+     * @param failed authResul
      * */
     @Override
-    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
-        Map<String, String> body = new HashMap<>();
-        body.put(Constants.MSG_KEY, Constants.ERROR_LOGIN_MSG);
-        body.put(Constants.ERROR_KEY, failed.getMessage());
+    protected void unsuccessfulAuthentication(final HttpServletRequest request, final HttpServletResponse response,
+                                              final AuthenticationException failed) throws IOException, ServletException {
+        GeneralAuthResponse body = new GeneralAuthResponse(Constants.ERROR_LOGIN_MSG, failed.getMessage());
+
         response.getWriter().write(new ObjectMapper().writeValueAsString(body));
         response.setContentType(Constants.CONTENT_TYPE_JSON);
         response.setStatus(HttpStatus.UNAUTHORIZED.value());
