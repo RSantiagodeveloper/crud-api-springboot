@@ -21,7 +21,7 @@
 		<checkstyle-maven-plugin.version>3.6.0</checkstyle-maven-plugin.version>
 		<checkstyle-maven-plugin.encoding>UTF-8</checkstyle-maven-plugin.encoding>
 		<main.package.path>com/musanlori/dev/crud/api</main.package.path>
-		<general.coverage.porcent>0.0</general.coverage.porcent>
+		<general.coverage.porcent>95%</general.coverage.porcent>
 	</properties>
 	<dependencies>
 		<dependency>

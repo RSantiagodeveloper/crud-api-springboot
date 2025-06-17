@@ -5,6 +5,7 @@ import com.musanlori.dev.crud.api.core.application.models.response.CatalogoRespo
 import com.musanlori.dev.crud.api.core.application.models.response.GeneralResponseService;
 import com.musanlori.dev.crud.api.core.domain.services.definitions.IEditorialesService;
 import com.musanlori.dev.crud.api.core.util.Constants;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class EditorialesController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PostMapping("/editorial")
-    public GeneralResponseService createEditorial(@RequestBody final CatalogosRequestModel request) {
+    public GeneralResponseService createEditorial(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.addNewEditorial(request);
     }
 
@@ -61,7 +62,7 @@ public class EditorialesController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PutMapping("/editorial")
-    public CatalogoResponseModel updateEditorial(@RequestBody final CatalogosRequestModel request) {
+    public CatalogoResponseModel updateEditorial(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.updateEditorial(request);
     }
 

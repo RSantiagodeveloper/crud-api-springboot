@@ -5,6 +5,7 @@ import com.musanlori.dev.crud.api.core.application.models.response.ArticuloRespo
 import com.musanlori.dev.crud.api.core.application.models.response.GeneralResponseService;
 import com.musanlori.dev.crud.api.core.domain.services.definitions.IArticuloService;
 import com.musanlori.dev.crud.api.core.util.Constants;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class ArticulosControler {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PostMapping("/articulo")
-    public GeneralResponseService createArticulo(@RequestBody final ArticuloRequestModel request) {
+    public GeneralResponseService createArticulo(@RequestBody @Valid final ArticuloRequestModel request) {
         return service.addNewArticulo(request);
     }
 
@@ -61,7 +62,7 @@ public class ArticulosControler {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PutMapping("/articulo")
-    public ArticuloResponse updateArticulo(@RequestBody final ArticuloRequestModel request) {
+    public ArticuloResponse updateArticulo(@RequestBody @Valid final ArticuloRequestModel request) {
         return service.updateArticulo(request);
     }
 

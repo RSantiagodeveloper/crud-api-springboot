@@ -5,6 +5,7 @@ import com.musanlori.dev.crud.api.core.application.models.response.CatalogoRespo
 import com.musanlori.dev.crud.api.core.application.models.response.GeneralResponseService;
 import com.musanlori.dev.crud.api.core.domain.services.definitions.IFranquiciasService;
 import com.musanlori.dev.crud.api.core.util.Constants;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class FranquiciasController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PostMapping("/franquicia")
-    public GeneralResponseService createFranquicia(@RequestBody final CatalogosRequestModel request) {
+    public GeneralResponseService createFranquicia(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.addNewFranquicia(request);
     }
 
@@ -61,7 +62,7 @@ public class FranquiciasController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PutMapping("/franquicia")
-    public CatalogoResponseModel updateFranquicia(@RequestBody final CatalogosRequestModel request) {
+    public CatalogoResponseModel updateFranquicia(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.updateFranquicia(request);
     }
 

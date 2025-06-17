@@ -36,16 +36,10 @@ public class EditorialesService implements IEditorialesService {
     public GeneralResponseService addNewEditorial(final CatalogosRequestModel request) {
         log.info("EXECUTING SERVICE ADD_NEW_EDITORIAL");
 
-        if (request.getDescription() == null || request.getDescription().isEmpty()) {
-            log.error("ERROR: OBLIGATORY FIELD NOT VALID OR NOT FOUND");
-            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
-                                                    ErrorServiceMessages.INVALID_DESCRIPTION_MSG,
-                                                    entityName);
-        }
-
         CatEditorialesEntity entity =  new CatEditorialesEntity();
         entity.setDescripcion(request.getDescription());
         entity.setCreatedAt(new Date());
+
         try {
             repository.save(entity);
             return new GeneralResponseService(ErrorServiceMessages.OPERATION_SUCCESS_CODE,
@@ -125,13 +119,6 @@ public class EditorialesService implements IEditorialesService {
             throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
                     ErrorServiceMessages.INVALID_ID_MSG,
                     "EDITORIAL");
-        }
-
-        if (request.getDescription() == null || request.getDescription().isEmpty()) {
-            log.error("ERROR: REQUIRED FIELDS NOT VALID OR NOT FOUND");
-            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
-                    ErrorServiceMessages.INVALID_DESCRIPTION_MSG,
-                    entityName);
         }
 
         Optional<CatEditorialesEntity> queryResult = repository.findById(request.getUuidElement());

@@ -36,13 +36,6 @@ public class TiposService implements ITiposService {
     public GeneralResponseService addNewTipo(final CatalogosRequestModel request) {
         log.info("EXECUTING SERVICE ADD_NEW_TIPO");
 
-        if (request.getDescription() == null || request.getDescription().isEmpty()) {
-            log.error("ERROR: OBLIGATORY FIELD NOT VALID OR NOT FOUND");
-            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
-                    ErrorServiceMessages.INVALID_DESCRIPTION_MSG,
-                    entityName);
-        }
-
         CatTiposEntity entity =  new CatTiposEntity();
         entity.setDescripcion(request.getDescription());
         entity.setCreatedAt(new Date());
@@ -124,13 +117,6 @@ public class TiposService implements ITiposService {
             log.error("ERROR: UUID NOT VALID OR NOT FOUND");
             throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
                     ErrorServiceMessages.INVALID_ID_MSG,
-                    entityName);
-        }
-
-        if (request.getDescription() == null || request.getDescription().isEmpty()) {
-            log.error("ERROR: REQUIRED FIELDS NOT VALID OR NOT FOUND");
-            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
-                    ErrorServiceMessages.INVALID_DESCRIPTION_MSG,
                     entityName);
         }
 

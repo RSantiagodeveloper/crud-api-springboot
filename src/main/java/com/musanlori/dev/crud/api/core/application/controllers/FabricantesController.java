@@ -5,6 +5,7 @@ import com.musanlori.dev.crud.api.core.application.models.response.CatalogoRespo
 import com.musanlori.dev.crud.api.core.application.models.response.GeneralResponseService;
 import com.musanlori.dev.crud.api.core.domain.services.definitions.IFabricantesService;
 import com.musanlori.dev.crud.api.core.util.Constants;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class FabricantesController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PostMapping("/fabricante")
-    public GeneralResponseService createFabricante(@RequestBody final CatalogosRequestModel request) {
+    public GeneralResponseService createFabricante(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.addNewFabricante(request);
     }
 
@@ -61,7 +62,7 @@ public class FabricantesController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PutMapping("/fabricante")
-    public CatalogoResponseModel updateFabricante(@RequestBody final CatalogosRequestModel request) {
+    public CatalogoResponseModel updateFabricante(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.updateFabricante(request);
     }
 

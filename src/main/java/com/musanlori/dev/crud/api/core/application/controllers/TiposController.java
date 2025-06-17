@@ -5,6 +5,7 @@ import com.musanlori.dev.crud.api.core.application.models.response.CatalogoRespo
 import com.musanlori.dev.crud.api.core.application.models.response.GeneralResponseService;
 import com.musanlori.dev.crud.api.core.domain.services.definitions.ITiposService;
 import com.musanlori.dev.crud.api.core.util.Constants;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +33,7 @@ public class TiposController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PostMapping("/tipo")
-    public GeneralResponseService createTipo(@RequestBody final CatalogosRequestModel request) {
+    public GeneralResponseService createTipo(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.addNewTipo(request);
     }
 
@@ -61,7 +62,7 @@ public class TiposController {
      * @return {@link GeneralResponseService} api response object.
      * */
     @PutMapping("/tipo")
-    public CatalogoResponseModel updateTipo(@RequestBody final CatalogosRequestModel request) {
+    public CatalogoResponseModel updateTipo(@RequestBody @Valid final CatalogosRequestModel request) {
         return service.updateTipo(request);
     }
 

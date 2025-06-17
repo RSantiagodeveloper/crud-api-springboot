@@ -36,13 +36,6 @@ public class FabricantesService implements IFabricantesService {
     public GeneralResponseService addNewFabricante(final CatalogosRequestModel request) {
         log.info("EXECUTING SERVICE ADD_NEW_FABRICANTE");
 
-        if (request.getDescription() == null || request.getDescription().isEmpty()) {
-            log.error("ERROR: OBLIGATORY FIELD NOT VALID OR NOT FOUND");
-            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
-                    ErrorServiceMessages.INVALID_DESCRIPTION_MSG,
-                    entityName);
-        }
-
         CatFabricantesEntity entity =  new CatFabricantesEntity();
         entity.setDescripcion(request.getDescription());
         entity.setCreatedAt(new Date());
@@ -124,13 +117,6 @@ public class FabricantesService implements IFabricantesService {
             log.error("ERROR: UUID NOT VALID OR NOT FOUND");
             throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
                     ErrorServiceMessages.INVALID_ID_MSG,
-                    entityName);
-        }
-
-        if (request.getDescription() == null || request.getDescription().isEmpty()) {
-            log.error("ERROR: REQUIRED FIELDS NOT VALID OR NOT FOUND");
-            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
-                    ErrorServiceMessages.INVALID_DESCRIPTION_MSG,
                     entityName);
         }
 
