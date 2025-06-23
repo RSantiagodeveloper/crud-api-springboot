@@ -182,6 +182,12 @@ public class ArticuloServiceImp implements IArticuloService {
     public ArticuloResponse updateArticulo(final ArticuloRequestModel request) {
         log.info("EXECUTING SERVICE UPDATE_ARTICULO");
 
+        if (request.getUuid() == null || request.getUuid().isEmpty()) {
+            log.error("invalid uuid. update operation stopped");
+            throw new RequestDataNotValidException(ErrorServiceMessages.REQUEST_FIELD_CODE,
+                    ErrorServiceMessages.INVALID_ID_MSG, entityName);
+        }
+
         Optional<ArticulosEntity> result = jpaArticulosRepository.findById(request.getUuid());
 
         ArticulosEntity entity = result.orElseThrow(() -> new NotFoundResourceException(
