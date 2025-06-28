@@ -56,10 +56,7 @@ class FabricantesServiceTest {
     void addNewFabricanteFailTest1() {
         Mockito.when(repository.save(Mockito.any(CatFabricantesEntity.class)))
                 .thenThrow(RuntimeException.class);
-        GeneralResponseService response = service.addNewFabricante(createRequest());
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_CODE, response.getCodigo());
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_MSG, response.getMensaje());
+        Assertions.assertThrows(LogicServiceConflictException.class, () -> service.addNewFabricante(createRequest()));
     }
 
     @Test

@@ -104,10 +104,7 @@ class ArticuloServiceImpTest {
     @Test
     void addNewArticuloFailTest1() {
         Mockito.when(jpaArticulosRepository.save(Mockito.any(ArticulosEntity.class))).thenThrow(RuntimeException.class);
-        GeneralResponseService response = service.addNewArticulo(createRequest(false));
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_CODE, response.getCodigo());
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_MSG, response.getMensaje());
+        Assertions.assertThrows(LogicServiceConflictException.class, () -> service.addNewArticulo(createRequest(false)));
     }
 
     @ParameterizedTest

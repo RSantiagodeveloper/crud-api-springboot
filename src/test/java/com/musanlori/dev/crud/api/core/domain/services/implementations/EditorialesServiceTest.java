@@ -56,10 +56,7 @@ class EditorialesServiceTest {
     void addNewEditorialFailTest1() {
         Mockito.when(repository.save(Mockito.any(CatEditorialesEntity.class)))
                 .thenThrow(RuntimeException.class);
-        GeneralResponseService response = service.addNewEditorial(createRequest());
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_CODE, response.getCodigo());
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_MSG, response.getMensaje());
+        Assertions.assertThrows(LogicServiceConflictException.class, () -> service.addNewEditorial(createRequest()));
     }
 
     @Test

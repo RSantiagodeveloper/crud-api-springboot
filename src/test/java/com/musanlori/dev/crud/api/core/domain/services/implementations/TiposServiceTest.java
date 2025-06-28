@@ -56,10 +56,7 @@ class TiposServiceTest {
     void addNewTipoFailTest1() {
         Mockito.when(repository.save(Mockito.any(CatTiposEntity.class)))
                 .thenThrow(RuntimeException.class);
-        GeneralResponseService response = service.addNewTipo(createRequest());
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_CODE, response.getCodigo());
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_MSG, response.getMensaje());
+        Assertions.assertThrows(LogicServiceConflictException.class, () -> service.addNewTipo(createRequest()));
     }
 
     @Test

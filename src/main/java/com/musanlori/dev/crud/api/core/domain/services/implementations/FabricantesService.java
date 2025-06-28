@@ -45,9 +45,10 @@ public class FabricantesService implements IFabricantesService {
                     ErrorServiceMessages.OPERATION_SUCCESS_MSG);
         } catch (Exception e) {
             log.error("Save Operation Failed. Error: {}", e.getMessage());
-            return new GeneralResponseService(
-                    ErrorServiceMessages.GRAL_ERROR_CODE,
-                    ErrorServiceMessages.GRAL_ERROR_MSG
+            throw new LogicServiceConflictException(
+                    ErrorServiceMessages.OPERATION_CRUD_FAILED_CODE,
+                    ErrorServiceMessages.CREATE_OPERATION_ERROR_MSG,
+                    entityName
             );
         }
     }

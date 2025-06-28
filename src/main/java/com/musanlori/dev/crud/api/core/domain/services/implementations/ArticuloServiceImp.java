@@ -127,9 +127,10 @@ public class ArticuloServiceImp implements IArticuloService {
         } catch (Exception e) {
             log.error(e.toString());
             log.error("Save Operation Failed. Error: {}", e.getMessage());
-            return new GeneralResponseService(
-                    ErrorServiceMessages.GRAL_ERROR_CODE,
-                    ErrorServiceMessages.GRAL_ERROR_MSG
+            throw new LogicServiceConflictException(
+                    ErrorServiceMessages.OPERATION_CRUD_FAILED_CODE,
+                    ErrorServiceMessages.CREATE_OPERATION_ERROR_MSG,
+                    entityName
             );
         }
     }

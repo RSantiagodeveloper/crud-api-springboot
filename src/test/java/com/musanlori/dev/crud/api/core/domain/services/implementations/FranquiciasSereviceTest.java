@@ -56,10 +56,7 @@ class FranquiciasSereviceTest {
     void addNewFranquiciaFailTest1() {
         Mockito.when(repository.save(Mockito.any(CatFranquiciasEntity.class)))
                 .thenThrow(RuntimeException.class);
-        GeneralResponseService response = service.addNewFranquicia(createRequest());
-        Assertions.assertNotNull(response);
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_CODE, response.getCodigo());
-        Assertions.assertEquals(ErrorServiceMessages.GRAL_ERROR_MSG, response.getMensaje());
+        Assertions.assertThrows(LogicServiceConflictException.class, () -> service.addNewFranquicia(createRequest()));
     }
 
     @Test
