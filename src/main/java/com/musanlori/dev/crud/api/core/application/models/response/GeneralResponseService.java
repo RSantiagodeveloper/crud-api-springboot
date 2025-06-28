@@ -14,16 +14,17 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class GeneralResponseService {
 
-    @Schema(name = "codigo", description = "response code", type = "string")
+    @Schema(name = "codigo", description = "response code", type = "string", example = "XXXX")
     private String codigo;
 
-    @Schema(name = "mensaje", description = "service message", type = "string")
+    @Schema(name = "mensaje", description = "service message", type = "string", example = "Service Message")
     private String mensaje;
 
-    @Schema(name = "timestamp", description = "response datetime", type = "string")
+    @Schema(name = "timestamp", description = "response datetime", type = "string", example = "yyyy-MM-dd HH:mm:ss.zzz")
     private Date timestamp;
 
-    @Schema(name = "errors", description = "list errors caught")
+    @Schema(name = "errors", description = "list errors caught if exists", example = "[{error_key: error_detail}]",
+            requiredMode = Schema.RequiredMode.NOT_REQUIRED)
     private List<Map<String, String>> errors;
 
     /**

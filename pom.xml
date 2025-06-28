@@ -118,6 +118,7 @@
 						<exclude>${main.package.path}/core/domain/model/**</exclude>
 						<exclude>${main.package.path}/core/util/**</exclude>
 						<exclude>${main.package.path}/security/**</exclude>
+						<exclude>${main.package.path}/openapi/**</exclude>
 						<exclude>${main.package.path}/Application.class</exclude>
 					</excludes>
 				</configuration>

@@ -10,6 +10,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -17,6 +18,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableWebSecurity
 public class SpringSecurityCofig {
 
     @Autowired
@@ -50,6 +52,8 @@ public class SpringSecurityCofig {
         return http.authorizeHttpRequests(
             (authz) -> authz
                     .requestMatchers(Constants.AUTH_BASE_PATH + "**")
+                    .permitAll() //all in AUTH path, is public
+                    .requestMatchers(Constants.API_DOCS_OPATH)
                     .permitAll() //all in AUTH path, is public
                     .requestMatchers(HttpMethod.GET, Constants.CRUD_BASE_PATH + "**")
                     .hasAnyRole(Constants.ADMIN_STR, Constants.USER_STR) //all POST in CRUD path is only to admin.

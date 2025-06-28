@@ -393,7 +393,7 @@ public class ArticuloServiceImp implements IArticuloService {
         response.setFabricante((entity.getFabricante() != null) ? entity.getFabricante().getDescripcion() : null);
         response.setEditorial((entity.getEditorial() != null) ? entity.getEditorial().getDescripcion() : null);
         response.setCreated(DateConversor.toLocalDateTimeFormat(entity.getCreatedAt()));
-        response.setUpdate(DateConversor.toLocalDateTimeFormat(entity.getUpdatedAt()));
+        response.setUpdated(DateConversor.toLocalDateTimeFormat(entity.getUpdatedAt()));
 
         return response;
     }

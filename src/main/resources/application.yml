@@ -23,8 +23,8 @@ logging:
 
 springdoc:
   swagger-ui:
-    path: /componente-ui-docs
+    path: /services/swagger-ui.html
     enabled: true
   api-docs:
-    path: /componente-api-docs
+    path: /services/api-docs
     enabled: true

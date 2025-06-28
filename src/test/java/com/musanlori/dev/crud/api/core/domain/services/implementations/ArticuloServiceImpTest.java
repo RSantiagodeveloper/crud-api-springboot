@@ -257,7 +257,7 @@ class ArticuloServiceImpTest {
         Assertions.assertNull(response.getFabricante());
         Assertions.assertNull(response.getFranquicia());
         Assertions.assertNull(response.getEditorial());
-        Assertions.assertInstanceOf(String.class, response.getUpdate());
+        Assertions.assertInstanceOf(String.class, response.getUpdated());
     }
 
     @Test
@@ -276,7 +276,7 @@ class ArticuloServiceImpTest {
         Assertions.assertInstanceOf(String.class, response.getFabricante());
         Assertions.assertInstanceOf(String.class, response.getFranquicia());
         Assertions.assertInstanceOf(String.class, response.getEditorial());
-        Assertions.assertInstanceOf(String.class, response.getUpdate());
+        Assertions.assertInstanceOf(String.class, response.getUpdated());
     }
 
     @Test
